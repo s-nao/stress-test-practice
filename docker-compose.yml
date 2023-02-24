@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  mock-server:
+    build: ./mock_api_server
+    volumes:
+      - ./mock_api_server:/var/app
+    environment:
+      TZ: "Asia/Tokyo"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0.31
+    environment:
+      TZ: "Asia/Tokyo"
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: mock_db
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app_user
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+
+
+  taurus:
+    build: ./taurus_test
+    volumes:
+      - ./taurus_test:/var/app
+    environment:
+      TZ: "Asia/Tokyo"

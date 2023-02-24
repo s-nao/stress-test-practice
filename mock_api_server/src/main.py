@@ -18,5 +18,4 @@ if __name__ == "__main__":
     app.mount('/api', controllers.users.app)
     app.mount('/api', controllers.search.app)
 
-
-    app.run(host='localhost', port=8081, debug=True, reloader=True)
+    app.run(host='0.0.0.0', port=8081, debug=True, reloader=True)
