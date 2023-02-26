@@ -34,3 +34,7 @@
 
 1. taurus_testのディレクトリに移動
 2. pipenv install
+3. 以下実行コマンドを行う
+```shell
+docker compose run --rm taurus bzt simulations/sample.yaml
+```

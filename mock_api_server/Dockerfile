@@ -11,8 +11,8 @@ COPY Pipfile /var/app/
 COPY Pipfile.lock /var/app/
 
 # Install PyPI packages
-RUN pip install -U pip &&\
-    pip install pipenv &&\
-    pipenv install --ignore-pipfile
+# typing_extensionsがないと起動ができないため、仕方なく直接インストールする
+RUN pip install -U pip && \
+    pip install pipenv typing_extensions
 
-ENTRYPOINT pipenv run python src/main.py
+RUN pipenv install --ignore-pipfile --system

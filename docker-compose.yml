@@ -2,12 +2,13 @@ version: '3.8'
 services:
   mock-server:
     build: ./mock_api_server
+    ports:
+      - "18000:8000"
     volumes:
       - ./mock_api_server:/var/app
     environment:
       TZ: "Asia/Tokyo"
-    depends_on:
-      - mysql
+    command: uvicorn src.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
 
   mysql:
     image: mysql:8.0.31
