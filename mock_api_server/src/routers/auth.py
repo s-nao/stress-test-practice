@@ -9,10 +9,11 @@ router = APIRouter(
     tags=['authentication']
 )
 
+
 @router.post('/login')
-def login(user: User, Authorize: AuthJWT = Depends()):
+def login(user: User, authorize: AuthJWT = Depends()):
     if user.username != "test" or user.password != "test":
         raise HTTPException(status_code=401,detail="Bad username or password")
 
-    access_token = Authorize.create_access_token(subject=user.username)
+    access_token = authorize.create_access_token(subject=user.username)
     return {"access_token": access_token}
