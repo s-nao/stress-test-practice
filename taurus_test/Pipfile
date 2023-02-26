@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 bzt = "*"
+typing-extensions = "*"
 
 [dev-packages]
 

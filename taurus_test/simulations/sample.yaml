@@ -1,6 +1,6 @@
 settings:
   default-executor: gatling
-  artifacts-dir: ../result/%Y-%m-%d_%H-%M-%S.%f
+  artifacts-dir: result/%Y-%m-%d_%H-%M-%S.%f
 
 execution:
   - concurrency: 20
@@ -11,17 +11,8 @@ execution:
 scenarios:
   test:
     requests:
-      - label: user-create
-        url: http://mock-server:8081/api/users
-        method: POST
-        headers:
-          Content-Type: application/json
-        body:
-          name: 1
-      - label: user-get
-        url: http://mock-server:8081/api/users
+      - label: search
+        url: http://mock-server:8000/api/search
         method: GET
         headers:
           Content-Type: application/json
-        body:
-          name: 1
