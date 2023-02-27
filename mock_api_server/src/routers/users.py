@@ -17,9 +17,9 @@ async def create():
 
 
 @router.get('', operation_id="authorize")
-async def detail(Authorize: AuthJWT = Depends()):
-    Authorize.jwt_required()
+async def detail(authorize: AuthJWT = Depends()):
+    authorize.jwt_required()
 
-    current_user = Authorize.get_jwt_subject()
+    current_user = authorize.get_jwt_subject()
     return {"user": current_user}
 

@@ -4,7 +4,7 @@
 
 - /stress_test -> Gatlingのテストをするディレクトリです
    
-- /test_server -> Gatlingでテストする際に使うローカルサーバー
+- /mock_api_server -> Gatlingでテストする際に使うローカルサーバー
 
 ## 環境
 
@@ -13,16 +13,19 @@
     - Gatlingにjava8が必須
             
 - test_server
-  - python3.6
+  - python3.11
   - pipenv 
-  - bottle
+  - fastapi
+  - fastapi-jwt-auth
 
 ## 動作方法
 
 ### テスト用APIサーバー
 
-1. test_serverのディレクトリに移動し、pipenv installを実行する
-2. test_server/src/main.pyを実行する
+1. dockerのapiサーバーを起動する
+``` $shell
+docker compose up -d mock_server
+```
 
 ### Gatlingの実行
 
