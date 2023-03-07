@@ -1,0 +1,19 @@
+settings:
+  default-executor: gatling
+  artifacts-dir: result/auth-%Y-%m-%d_%H-%M-%S.%f
+
+execution:
+  - concurrency: 5
+    ramp-up: 10s
+    hold-for: 10s
+    scenario: auth
+
+scenarios:
+  auth:
+    requests:
+      - label: user-profile
+        url: http://mock-server:8000/api/users
+        method: POST
+        headers:
+          Content-Type: application/json
+          Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNjc3NDE3MDU1LCJuYmYiOjE2Nzc0MTcwNTUsImp0aSI6ImQ4YjBkYmVhLTdmNjQtNGZmZS05NzVjLTQ5NWUzMzA2ODRmYyIsImV4cCI6MTY3NzQxNzk1NSwidHlwZSI6ImFjY2VzcyIsImZyZXNoIjpmYWxzZX0.gz5T4P5ZmTZ5xonI7ilgy4y02QnhhnIWoCc07LZMejM

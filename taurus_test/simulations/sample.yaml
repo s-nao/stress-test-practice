@@ -1,0 +1,18 @@
+settings:
+  default-executor: gatling
+  artifacts-dir: result/%Y-%m-%d_%H-%M-%S.%f
+
+execution:
+  - concurrency: 20
+    ramp-up: 2m
+    hold-for: 1m
+    scenario: test
+
+scenarios:
+  test:
+    requests:
+      - label: search
+        url: http://mock-server:8000/api/search
+        method: GET
+        headers:
+          Content-Type: application/json
